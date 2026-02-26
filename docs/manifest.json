@@ -1,7 +1,7 @@
 {
   "name": "Privacy Shield - Opt-Out Checklist",
   "short_name": "Privacy Shield",
-  "description": "Track your progress removing personal info from 443+ data broker sites",
+  "description": "Track your progress removing personal info from 442+ data broker sites",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
