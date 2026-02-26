@@ -1,0 +1,1047 @@
+/* Privacy Shield - PWA Checklist App Stylesheet */
+/* Mobile-first, dark theme with indigo/purple accents */
+
+/* ============================================
+   1. Root variables and reset
+   ============================================ */
+:root {
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --primary-dark: #4f46e5;
+  --bg: #0a0a0f;
+  --card: #1a1a2e;
+  --surface: #16162a;
+  --text: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --success: #22c55e;
+  --success-bg: rgba(34, 197, 94, 0.1);
+  --warning: #f59e0b;
+  --warning-bg: rgba(245, 158, 11, 0.1);
+  --danger: #ef4444;
+  --border: #2a2a4a;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --tab-height: 64px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   2. Body and app shell
+   ============================================ */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100vh;
+  padding-bottom: calc(var(--tab-height) + var(--safe-bottom) + 8px);
+}
+
+.page {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.page.active {
+  display: block;
+  opacity: 1;
+  animation: fadeIn 0.2s ease forwards;
+}
+
+/* ============================================
+   3. Header
+   ============================================ */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding-top: var(--safe-top);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+
+.app-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-title svg {
+  width: 24px;
+  height: 24px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ============================================
+   4. Content area
+   ============================================ */
+.content {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: calc(60px + var(--safe-top)) 16px 16px;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 20px 0 12px;
+  color: var(--text);
+}
+
+.section-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+/* ============================================
+   5. Dashboard cards
+   ============================================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background-color: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-light);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.progress-card {
+  background-color: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.progress-bar-container {
+  height: 8px;
+  background-color: var(--surface);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   6. Site cards and checklists
+   ============================================ */
+.site-card {
+  background-color: var(--card);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.site-card.completed {
+  border-color: var(--success);
+  opacity: 0.7;
+}
+
+.site-header {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.site-checkbox {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  color: transparent;
+}
+
+.site-checkbox.checked {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+
+.site-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.site-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.site-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.site-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.6875rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.badge-easy {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+}
+
+.badge-medium {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+.badge-priority {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+.site-expand {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.site-card.expanded .site-expand {
+  transform: rotate(180deg);
+}
+
+.site-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.site-card.expanded .site-details {
+  max-height: 800px;
+}
+
+.site-details-inner {
+  padding: 0 16px 16px;
+}
+
+.site-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-light);
+  font-size: 0.8125rem;
+  text-decoration: none;
+  padding: 8px 12px;
+  background-color: rgba(99, 102, 241, 0.1);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  word-break: break-all;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-note {
+  font-size: 0.8125rem;
+  color: var(--warning);
+  background-color: var(--warning-bg);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+}
+
+.step-list {
+  list-style: none;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.step-item:last-child {
+  border-bottom: none;
+}
+
+.step-checkbox {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  margin-top: 1px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  color: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.step-checkbox.checked {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: white;
+}
+
+.step-text {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.step-text.checked {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   7. Search and filters
+   ============================================ */
+.search-container {
+  margin-bottom: 16px;
+  position: sticky;
+  top: calc(56px + var(--safe-top));
+  z-index: 50;
+  background-color: var(--bg);
+  padding: 8px 0;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 16px; /* Prevents iOS zoom on focus */
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip {
+  white-space: nowrap;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  background-color: var(--surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+.filter-chip.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* ============================================
+   8. Bottom tab navigation
+   ============================================ */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(26, 26, 46, 0.95);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: var(--safe-bottom);
+  z-index: 100;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0;
+  min-height: 44px;
+  min-width: 44px;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.625rem;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s;
+  text-decoration: none;
+  -webkit-touch-callout: none;
+}
+
+.tab-item.active {
+  color: var(--primary-light);
+}
+
+.tab-icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 2px;
+}
+
+/* ============================================
+   9. Settings page
+   ============================================ */
+.settings-group {
+  margin-bottom: 24px;
+}
+
+.settings-group-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.settings-card {
+  background-color: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.2s;
+  -webkit-touch-callout: none;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.settings-item:active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.settings-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.settings-item-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.settings-item-text {
+  font-size: 0.9375rem;
+  color: var(--text);
+}
+
+.settings-item-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.settings-item-arrow {
+  color: var(--text-muted);
+}
+
+.icon-blue {
+  background-color: rgba(59, 130, 246, 0.15);
+}
+
+.icon-green {
+  background-color: rgba(34, 197, 94, 0.15);
+}
+
+.icon-purple {
+  background-color: rgba(139, 92, 246, 0.15);
+}
+
+.icon-orange {
+  background-color: rgba(245, 158, 11, 0.15);
+}
+
+.icon-red {
+  background-color: rgba(239, 68, 68, 0.15);
+}
+
+/* ============================================
+   10. Buttons
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  min-height: 44px;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:active {
+  background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.btn-danger {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--danger);
+}
+
+.btn-danger:active {
+  background-color: rgba(239, 68, 68, 0.25);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 0.8125rem;
+  min-height: 36px;
+}
+
+/* ============================================
+   11. Modal
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal {
+  background-color: var(--card);
+  border-radius: var(--radius) var(--radius) 0 0;
+  width: 100%;
+  max-width: 640px;
+  max-height: 85vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  padding: 20px 16px calc(20px + var(--safe-bottom));
+  position: relative;
+}
+
+.modal-overlay.active .modal {
+  transform: translateY(0);
+}
+
+.modal-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  background-color: var(--surface);
+  border: none;
+  border-radius: 50%;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.modal-close:active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   12. Toast notifications
+   ============================================ */
+.toast-container {
+  position: fixed;
+  top: calc(var(--safe-top) + 60px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 300;
+  width: calc(100% - 32px);
+  max-width: 400px;
+}
+
+.toast {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  animation: slideDown 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toast.success {
+  border-color: var(--success);
+}
+
+.toast.error {
+  border-color: var(--danger);
+}
+
+/* ============================================
+   13. Email template section
+   ============================================ */
+.email-template {
+  background-color: var(--surface);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.copy-btn:active {
+  background-color: var(--primary-dark);
+}
+
+/* ============================================
+   14. Quick start and tips cards
+   ============================================ */
+.tip-card {
+  background-color: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+  border-left: 3px solid var(--primary);
+}
+
+.tip-card h3 {
+  font-size: 0.9375rem;
+  margin-bottom: 8px;
+}
+
+.tip-list {
+  list-style: none;
+  counter-reset: tip;
+}
+
+.tip-list li {
+  counter-increment: tip;
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.tip-list li::before {
+  content: counter(tip);
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 20px;
+}
+
+/* ============================================
+   15. Animations
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   16. Category badge colors for data brokers
+   ============================================ */
+.cat-b2b {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+.cat-ad {
+  background-color: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+}
+
+.cat-mkt {
+  background-color: rgba(20, 184, 166, 0.15);
+  color: #2dd4bf;
+}
+
+.cat-fin {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+.cat-gov {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+.cat-loc {
+  background-color: rgba(6, 182, 212, 0.15);
+  color: #22d3ee;
+}
+
+.cat-id {
+  background-color: rgba(236, 72, 153, 0.15);
+  color: #f472b6;
+}
+
+.cat-prop {
+  background-color: rgba(132, 204, 22, 0.15);
+  color: #a3e635;
+}
+
+.cat-hr {
+  background-color: rgba(249, 115, 22, 0.15);
+  color: #fb923c;
+}
+
+.cat-pub {
+  background-color: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+}
+
+.cat-other {
+  background-color: rgba(148, 163, 184, 0.15);
+  color: #94a3b8;
+}
+
+/* ============================================
+   17. Responsive and print
+   ============================================ */
+@media (min-width: 641px) {
+  .content,
+  .header-content,
+  .modal {
+    max-width: 640px;
+  }
+
+  .stats-grid {
+    gap: 16px;
+  }
+}
+
+@media print {
+  .tab-bar,
+  .app-header,
+  .header-actions,
+  .search-container,
+  .filter-bar,
+  .modal-overlay,
+  .toast-container {
+    display: none !important;
+  }
+
+  #app {
+    padding-bottom: 0;
+  }
+
+  .content {
+    padding-top: 16px;
+  }
+
+  .site-card .site-details {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  body {
+    background-color: white;
+    color: #1a1a2e;
+  }
+
+  .site-card,
+  .stat-card,
+  .progress-card,
+  .settings-card,
+  .tip-card {
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+  }
+
+  .site-name,
+  .stat-value,
+  .section-title {
+    color: #1a1a2e;
+  }
+
+  .stat-label,
+  .progress-text,
+  .section-subtitle,
+  .site-meta,
+  .step-text {
+    color: #64748b;
+  }
+}
+
+/* ============================================
+   18. Special iOS styles
+   ============================================ */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .tab-bar {
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Prevent iOS text selection/callout on interactive elements */
+.site-header,
+.site-checkbox,
+.step-checkbox,
+.filter-chip,
+.tab-item,
+.settings-item,
+.btn,
+.modal-close,
+.copy-btn {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Ensure inputs don't trigger iOS zoom (16px minimum) */
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+/* Fix for iOS scrollbar issues - use overlay scrollbars */
+.site-details-inner,
+.modal,
+.email-template {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbars on iOS while keeping scroll functionality */
+.modal::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.filter-bar {
+  -ms-overflow-style: none;
+}
