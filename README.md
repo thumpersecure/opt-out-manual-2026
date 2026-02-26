@@ -2,7 +2,9 @@
 
 > An interactive web app to track your progress removing personal info from 442+ people-search and data broker sites.
 
-## [Launch the App](https://thumpersecure.github.io/opt-out-manual-2026/)
+<center>
+### [Launch the Free Web App!](https://thumpersecure.github.io/opt-out-manual-2026/)
+</center)
 
 ## Features
 
