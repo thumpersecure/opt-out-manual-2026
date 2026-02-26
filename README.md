@@ -1,4 +1,4 @@
-# Privacy Shield - Opt-Out Checklist
+# Privacy Shield - Opt-Out Checklist and Web App
 
 > An interactive web app to track your progress removing personal info from 442+ people-search and data broker sites.
 
