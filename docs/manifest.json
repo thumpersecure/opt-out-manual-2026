@@ -1,0 +1,19 @@
+{
+  "name": "Privacy Shield - Opt-Out Checklist",
+  "short_name": "Privacy Shield",
+  "description": "Track your progress removing personal info from 442+ data broker sites",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0f",
+  "theme_color": "#6366f1",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ]
+}

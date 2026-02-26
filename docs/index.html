@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Privacy Shield">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="description" content="Track your progress removing personal info from 443+ data broker sites">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon.svg">
+<link rel="icon" type="image/svg+xml" href="./icon.svg">
+<link rel="stylesheet" href="./app.css">
+<title>Privacy Shield - Opt-Out Checklist</title>
+</head>
+<body>
+<noscript><div style="padding:40px;text-align:center;color:#e2e8f0;background:#0a0a0f;min-height:100vh;font-family:system-ui"><h1>Privacy Shield</h1><p style="margin-top:16px">This app requires JavaScript to run. Please enable JavaScript in your browser settings.</p></div></noscript>
+
+<header class="app-header">
+  <div class="header-content">
+    <div class="app-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      Privacy Shield
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-sm btn-secondary" onclick="App.showSearch()" aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="app">
+
+  <!-- DASHBOARD PAGE -->
+  <div id="page-dashboard" class="page active">
+    <div class="content">
+      <div class="section-title">Your Progress</div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" id="stat-completed">0</div>
+          <div class="stat-label">Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-total">442</div>
+          <div class="stat-label">Total Sites</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-main">0/30</div>
+          <div class="stat-label">Main Sites</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="stat-today">0</div>
+          <div class="stat-label">Done Today</div>
+        </div>
+      </div>
+
+      <div class="progress-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-weight:600">Overall Progress</span>
+          <span class="progress-text" id="progress-pct">0%</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+        </div>
+        <div class="progress-text" id="progress-detail">0 of 442 sites completed</div>
+      </div>
+
+      <div class="progress-card" id="priority-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <span style="font-weight:600">Priority Sites</span>
+          <span class="site-badge badge-priority">Start Here</span>
+        </div>
+        <div class="section-subtitle" style="margin-bottom:12px">These upstream brokers feed data to many smaller sites. Remove from these first for maximum impact.</div>
+        <div id="priority-list"></div>
+      </div>
+
+      <div class="tip-card">
+        <h3>Quick Start</h3>
+        <ol class="tip-list" id="quick-start-list"></ol>
+      </div>
+
+      <div class="tip-card">
+        <h3>Before You Begin</h3>
+        <ol class="tip-list" id="before-begin-list"></ol>
+      </div>
+
+      <div class="tip-card">
+        <h3>Pro Tips</h3>
+        <ol class="tip-list" id="pro-tips-list"></ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN SITES PAGE -->
+  <div id="page-main" class="page">
+    <div class="content">
+      <div class="section-title">Main Sites <span id="main-count" class="progress-text">(30 sites)</span></div>
+      <div class="section-subtitle">Detailed step-by-step opt-out instructions</div>
+      <div class="search-container">
+        <div style="position:relative">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" class="search-input" id="search-main" placeholder="Search sites..." oninput="App.filterMain()">
+        </div>
+        <div class="filter-bar" id="filter-main">
+          <button class="filter-chip active" data-filter="all" onclick="App.setFilter('main','all',this)">All</button>
+          <button class="filter-chip" data-filter="pending" onclick="App.setFilter('main','pending',this)">Pending</button>
+          <button class="filter-chip" data-filter="completed" onclick="App.setFilter('main','completed',this)">Done</button>
+          <button class="filter-chip" data-filter="easy" onclick="App.setFilter('main','easy',this)">Easy</button>
+          <button class="filter-chip" data-filter="medium" onclick="App.setFilter('main','medium',this)">Medium</button>
+        </div>
+      </div>
+      <div id="main-sites-list"></div>
+    </div>
+  </div>
+
+  <!-- ADDITIONAL SITES PAGE -->
+  <div id="page-additional" class="page">
+    <div class="content">
+      <div class="section-title">Additional Sites <span id="additional-count" class="progress-text">(155 sites)</span></div>
+      <div class="section-subtitle">People search &amp; data broker opt-outs</div>
+      <div class="search-container">
+        <div style="position:relative">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" class="search-input" id="search-additional" placeholder="Search sites..." oninput="App.filterAdditional()">
+        </div>
+        <div class="filter-bar" id="filter-additional">
+          <button class="filter-chip active" data-filter="all" onclick="App.setFilter('additional','all',this)">All</button>
+          <button class="filter-chip" data-filter="pending" onclick="App.setFilter('additional','pending',this)">Pending</button>
+          <button class="filter-chip" data-filter="completed" onclick="App.setFilter('additional','completed',this)">Done</button>
+          <button class="filter-chip" data-filter="priority" onclick="App.setFilter('additional','priority',this)">Priority</button>
+        </div>
+      </div>
+      <div id="additional-sites-list"></div>
+    </div>
+  </div>
+
+  <!-- DATA BROKERS PAGE -->
+  <div id="page-brokers" class="page">
+    <div class="content">
+      <div class="section-title">Data Brokers <span id="brokers-count" class="progress-text">(257 sites)</span></div>
+      <div class="section-subtitle">B2B, ad-tech, marketing &amp; more</div>
+      <div class="search-container">
+        <div style="position:relative">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" class="search-input" id="search-brokers" placeholder="Search sites..." oninput="App.filterBrokers()">
+        </div>
+        <div class="filter-bar" id="filter-brokers">
+          <button class="filter-chip active" data-filter="all" onclick="App.setFilter('brokers','all',this)">All</button>
+          <button class="filter-chip" data-filter="pending" onclick="App.setFilter('brokers','pending',this)">Pending</button>
+          <button class="filter-chip" data-filter="completed" onclick="App.setFilter('brokers','completed',this)">Done</button>
+          <button class="filter-chip" data-filter="B2B" onclick="App.setFilter('brokers','B2B',this)">B2B</button>
+          <button class="filter-chip" data-filter="AD" onclick="App.setFilter('brokers','AD',this)">Ad-Tech</button>
+          <button class="filter-chip" data-filter="MKT" onclick="App.setFilter('brokers','MKT',this)">Marketing</button>
+          <button class="filter-chip" data-filter="FIN" onclick="App.setFilter('brokers','FIN',this)">Finance</button>
+          <button class="filter-chip" data-filter="GOV" onclick="App.setFilter('brokers','GOV',this)">Political</button>
+          <button class="filter-chip" data-filter="LOC" onclick="App.setFilter('brokers','LOC',this)">Location</button>
+          <button class="filter-chip" data-filter="HR" onclick="App.setFilter('brokers','HR',this)">HR</button>
+          <button class="filter-chip" data-filter="ID" onclick="App.setFilter('brokers','ID',this)">Identity</button>
+          <button class="filter-chip" data-filter="PROP" onclick="App.setFilter('brokers','PROP',this)">Property</button>
+          <button class="filter-chip" data-filter="PUB" onclick="App.setFilter('brokers','PUB',this)">Public</button>
+        </div>
+      </div>
+      <div id="brokers-sites-list"></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS PAGE -->
+  <div id="page-settings" class="page">
+    <div class="content">
+      <div class="section-title">Settings</div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Your Data</div>
+        <div class="settings-card">
+          <div class="settings-item" onclick="App.exportProgress()">
+            <div class="settings-item-left">
+              <div class="settings-item-icon icon-blue">📤</div>
+              <div>
+                <div class="settings-item-text">Export Progress</div>
+                <div class="settings-item-desc">Save your checklist data as a file</div>
+              </div>
+            </div>
+            <div class="settings-item-arrow">›</div>
+          </div>
+          <div class="settings-item" onclick="App.importProgress()">
+            <div class="settings-item-left">
+              <div class="settings-item-icon icon-green">📥</div>
+              <div>
+                <div class="settings-item-text">Import Progress</div>
+                <div class="settings-item-desc">Restore from a previously saved file</div>
+              </div>
+            </div>
+            <div class="settings-item-arrow">›</div>
+          </div>
+          <div class="settings-item" onclick="App.confirmReset()">
+            <div class="settings-item-left">
+              <div class="settings-item-icon icon-red">🗑️</div>
+              <div>
+                <div class="settings-item-text">Reset All Progress</div>
+                <div class="settings-item-desc">Clear all checklist data</div>
+              </div>
+            </div>
+            <div class="settings-item-arrow">›</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Reminders</div>
+        <div class="settings-card">
+          <div class="settings-item" onclick="App.showReminderModal()">
+            <div class="settings-item-left">
+              <div class="settings-item-icon icon-purple">🔔</div>
+              <div>
+                <div class="settings-item-text">Daily Reminder</div>
+                <div class="settings-item-desc">Set up a noon reminder via iOS Shortcut</div>
+              </div>
+            </div>
+            <div class="settings-item-arrow">›</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">Tools</div>
+        <div class="settings-card">
+          <div class="settings-item" onclick="App.showEmailTemplate()">
+            <div class="settings-item-left">
+              <div class="settings-item-icon icon-orange">✉️</div>
+              <div>
+                <div class="settings-item-text">Email Template</div>
+                <div class="settings-item-desc">Copy a ready-made removal request email</div>
+              </div>
+            </div>
+            <div class="settings-item-arrow">›</div>
+          </div>
+          <div class="settings-item" onclick="App.showAddToHomescreen()">
+            <div class="settings-item-left">
+              <div class="settings-item-icon icon-blue">📱</div>
+              <div>
+                <div class="settings-item-text">Add to Home Screen</div>
+                <div class="settings-item-desc">Install as an app on your device</div>
+              </div>
+            </div>
+            <div class="settings-item-arrow">›</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <div class="settings-group-title">About</div>
+        <div class="settings-card">
+          <div class="settings-item">
+            <div class="settings-item-left">
+              <div class="settings-item-icon icon-purple">🛡️</div>
+              <div>
+                <div class="settings-item-text">Privacy Shield v1.0</div>
+                <div class="settings-item-desc">443+ sites • Open source • No tracking</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="App.closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-title" id="modal-title"></div>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- HIDDEN FILE INPUT -->
+<input type="file" id="import-file" accept=".json" style="display:none" onchange="App.handleImport(event)">
+
+<!-- TAB BAR -->
+<nav class="tab-bar">
+  <a class="tab-item active" data-page="dashboard" onclick="App.navigate('dashboard',this)">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+    Home
+  </a>
+  <a class="tab-item" data-page="main" onclick="App.navigate('main',this)">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Main
+  </a>
+  <a class="tab-item" data-page="additional" onclick="App.navigate('additional',this)">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+    More
+  </a>
+  <a class="tab-item" data-page="brokers" onclick="App.navigate('brokers',this)">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    Brokers
+  </a>
+  <a class="tab-item" data-page="settings" onclick="App.navigate('settings',this)">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2m-9-11h2m18 0h2m-3.3-6.7-1.4 1.4M6.7 17.3l-1.4 1.4m0-13.4 1.4 1.4m10.6 10.6 1.4 1.4"/></svg>
+    Settings
+  </a>
+</nav>
+
+<script src="./data.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
