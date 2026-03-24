@@ -966,7 +966,7 @@ The following sites are primarily **data brokers, B2B sales intelligence platfor
 |**PUB**  |Public records/people search        |
 |**OTHER**|Other data services                 |
 
-|#  |Site                                      |Website                        |Category|Opt-Out Method                  |Processing Time|Notes                                                                                                                                                                                                              
+#  |Site                                      |Website                        |Category|Opt-Out Method                  |Processing Time|Notes                                                                                                                                                                                                              
 |
 |---|------------------------------------------|-------------------------------|--------|--------------------------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
