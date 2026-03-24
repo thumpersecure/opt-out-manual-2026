@@ -966,7 +966,8 @@ The following sites are primarily **data brokers, B2B sales intelligence platfor
 |**PUB**  |Public records/people search        |
 |**OTHER**|Other data services                 |
 
-|#  |Site                                      |Website                        |Category|Opt-Out Method                  |Processing Time|Notes                                                                                                                                                                                                                   |
+|#  |Site                                      |Website                        |Category|Opt-Out Method                  |Processing Time|Notes                                                                                                                                                                                                              
+|
 |---|------------------------------------------|-------------------------------|--------|--------------------------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |1  |**33MileRadius**                          |33mileradius.com               |MKT     |📧 Email privacy@33mileradius.com|Varies         |Direct mail targeting company. Email opt-out request.                                                                                                                                                                   |
 |2  |**6sense**                                |6sense.com                     |B2B     |Online form + 📧 confirm         |Varies         |B2B predictive intelligence. Footer → “Do Not Sell” → complete form → confirm email.                                                                                                                                    |
