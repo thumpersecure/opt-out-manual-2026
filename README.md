@@ -93,3 +93,6 @@ This app collects no data. Everything runs locally in your browser. There are no
 ## License
 
 [The Unlicense](LICENSE) - Public Domain
+
+
+https://raw.githubusercontent.com/thumpersecure/opt-out-manual-2026/refs/heads/main/The.Manual.md
