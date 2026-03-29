@@ -94,8 +94,20 @@ This app collects no data. Everything runs locally in your browser. There are no
 
 [The Unlicense](LICENSE) - Public Domain
 
+## News
 
-https://raw.githubusercontent.com/thumpersecure/opt-out-manual-2026/refs/heads/main/The.Manual.md
+I’m excited to share that the “Awesome Opt-Out Guide 2026” is now featured on OSINT Framework! 🤩🥳
+
+
+There are countless ideas that never leave the draft stage. This one did. It was built, shared, submitted, and now recognized by a platform that many people in this field already know and trust.
+
+For me, this is bigger than just a listing. It represents momentum. It reflects what can happen when you put real work into something useful and make it available to the people who need it. The 2026 Opt-Out Guide was created to be actionable, direct, and worth using, and I’m proud to see it now featured alongside other respected resources.
+
+Thank you to everyone who has read it, shared it, supported it, or contributed feedback along the way. I’m looking forward to continuing to improve it and expand it further.
+
+If you have suggestions, corrections, or additional sources that should be considered for future versions, I’d love to hear them here.
+
+
 
 
 # 🛡️ Opt-Out Guide (People Search / Data Broker Sites)
