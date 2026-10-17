@@ -1623,6 +1623,15 @@ const SITE_DATA = {
       priority: false
     },
     {
+      "id": "recordwell",
+      "name": "Recordwell",
+      "domain": "recordwell.ai",
+      "optOutUrl": "https://recordwell.ai/opt-out",
+      "method": "Online form + Email",
+      "notes": "Free; no account or payment required. Removal and review requests use an email confirmation link. Do-not-sell-or-share requests are recorded on submission. Removal affects Recordwell results, not the original sources.",
+      "priority": false
+    },
+    {
       id: 'rehold',
       name: 'Rehold',
       domain: 'rehold.com',
