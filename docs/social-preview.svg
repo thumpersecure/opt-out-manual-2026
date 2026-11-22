@@ -111,6 +111,13 @@
     PRIVACY TOOLS
   </text>
 
+  <!-- Version badge -->
+  <rect x="598" y="88" width="150" height="32" rx="6" fill="rgba(245,158,11,0.14)" stroke="#f59e0b" stroke-width="1"/>
+  <text x="673" y="109" font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+        font-size="13" font-weight="700" fill="#fbbf24" text-anchor="middle" letter-spacing="2">
+    VERSION 2.0
+  </text>
+
   <!-- Main headline: OPT-OUT -->
   <text x="376" y="215"
         font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
@@ -139,29 +146,34 @@
   <text x="376" y="378"
         font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
         font-size="22" fill="#94a3b8" font-weight="400" letter-spacing="0.2">
-    Step-by-step removal from 443+ data broker &amp; people-search sites.
+    Step-by-step removal from 425 data broker &amp; people-search sites.
   </text>
 
   <!-- Stats pills row -->
   <!-- Pill 1 -->
   <rect x="376" y="408" width="168" height="36" rx="18" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
   <text x="460" y="431" font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
-        font-size="14" font-weight="600" fill="#a5b4fc" text-anchor="middle">🛡️ Free &amp; Open Source</text>
+        font-size="13" font-weight="600" fill="#a5b4fc" text-anchor="middle">Free &amp; Open Source</text>
 
   <!-- Pill 2 -->
   <rect x="556" y="408" width="148" height="36" rx="18" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.35)" stroke-width="1"/>
   <text x="630" y="431" font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
-        font-size="14" font-weight="600" fill="#fbbf24" text-anchor="middle">443+ Sites</text>
+        font-size="14" font-weight="600" fill="#fbbf24" text-anchor="middle">425 Sites</text>
 
   <!-- Pill 3 -->
   <rect x="716" y="408" width="152" height="36" rx="18" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.35)" stroke-width="1"/>
   <text x="792" y="431" font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
         font-size="14" font-weight="600" fill="#6ee7b7" text-anchor="middle">No Tracking</text>
 
+  <!-- Pill 4 -->
+  <rect x="880" y="408" width="212" height="36" rx="18" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.4)" stroke-width="1"/>
+  <text x="986" y="431" font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
+        font-size="14" font-weight="600" fill="#a5b4fc" text-anchor="middle">Links checked Nov 2026</text>
+
   <!-- OSINT Framework featured badge -->
   <rect x="376" y="465" width="248" height="42" rx="8" fill="rgba(15,23,42,0.8)" stroke="rgba(245,158,11,0.6)" stroke-width="1.5"/>
   <!-- Star icon -->
-  <text x="393" y="491" font-size="16">⭐</text>
+  <path transform="translate(392,476)" fill="#f59e0b" d="M9 0l2.6 5.6 6.1.7-4.5 4.2 1.2 6L9 13.5 3.6 16.5l1.2-6L.3 6.3l6.1-.7z"/>
   <text x="418" y="491"
         font-family="system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
         font-size="13" font-weight="700" fill="#f59e0b" letter-spacing="0.5">

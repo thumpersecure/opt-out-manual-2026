@@ -26,6 +26,35 @@
   --tab-height: 64px;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-top: env(safe-area-inset-top, 0px);
+  --header-bg: rgba(10, 10, 15, 0.9);
+  --tab-bg: rgba(26, 26, 46, 0.95);
+  --hairline: rgba(255, 255, 255, 0.06);
+  --press: rgba(255, 255, 255, 0.05);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --primary: #4f46e5;
+  --primary-light: #4338ca;
+  --primary-dark: #3730a3;
+  --bg: #f5f6fa;
+  --card: #ffffff;
+  --surface: #eceef5;
+  --text: #151826;
+  --text-secondary: #475069;
+  --text-muted: #667085;
+  --success: #15803d;
+  --success-bg: rgba(21, 128, 61, 0.1);
+  --warning: #b45309;
+  --warning-bg: rgba(180, 83, 9, 0.09);
+  --danger: #dc2626;
+  --border: #d8dce8;
+  --shadow: 0 4px 10px -2px rgba(20, 24, 40, 0.12);
+  --header-bg: rgba(245, 246, 250, 0.92);
+  --tab-bg: rgba(255, 255, 255, 0.96);
+  --hairline: rgba(20, 24, 40, 0.08);
+  --press: rgba(20, 24, 40, 0.05);
+  color-scheme: light;
 }
 
 *, *::before, *::after {
@@ -51,8 +80,8 @@ body {
 }
 
 #app {
-  min-height: 100vh;
-  padding-bottom: calc(var(--tab-height) + var(--safe-bottom) + 8px);
+  min-height: calc(100vh - 160px);
+  padding-bottom: 8px;
 }
 
 .page {
@@ -77,7 +106,7 @@ body {
   right: 0;
   width: 100%;
   z-index: 100;
-  background-color: rgba(10, 10, 15, 0.9);
+  background-color: var(--header-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding-top: var(--safe-top);
@@ -209,14 +238,42 @@ body {
 }
 
 .site-header {
-  padding: 14px 16px;
+  padding: 0 0 0 16px;
   display: flex;
   align-items: center;
   gap: 12px;
-  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   -webkit-touch-callout: none;
+}
+
+.site-header-static {
+  padding-right: 12px;
+}
+
+.site-toggle {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px 14px 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site-header-static .site-toggle {
+  padding-right: 0;
+}
+
+.site-toggle .site-info,
+.site-toggle .site-name {
+  display: block;
 }
 
 .site-checkbox {
@@ -306,14 +363,24 @@ body {
   transform: rotate(180deg);
 }
 
+/* Animates to the content's real height (no fixed max-height clipping), and
+   keeps collapsed links out of the tab order via visibility. */
 .site-details {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.25s ease, visibility 0s linear 0.25s;
 }
 
 .site-card.expanded .site-details {
-  max-height: 800px;
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows 0.25s ease, visibility 0s;
+}
+
+.site-details-clip {
+  overflow: hidden;
+  min-height: 0;
 }
 
 .site-details-inner {
@@ -353,7 +420,7 @@ body {
   align-items: flex-start;
   gap: 10px;
   padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--hairline);
 }
 
 .step-item:last-child {
@@ -479,7 +546,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(26, 26, 46, 0.95);
+  background-color: var(--tab-bg);
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-around;
@@ -816,6 +883,7 @@ body {
   border-left: 3px solid var(--primary);
 }
 
+.tip-card h2,
 .tip-card h3 {
   font-size: 0.9375rem;
   margin-bottom: 8px;
@@ -1048,4 +1116,464 @@ textarea {
 
 .filter-bar {
   -ms-overflow-style: none;
+}
+
+/* ============================================
+   19. Utilities (replace inline styles so the page can ship a strict CSP)
+   ============================================ */
+[hidden] {
+  display: none !important;
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fw-600 { font-weight: 600; }
+.mb-12 { margin-bottom: 12px; }
+
+.noscript {
+  padding: 40px;
+  text-align: center;
+  min-height: 100vh;
+  font-family: system-ui, sans-serif;
+}
+
+.noscript p { margin-top: 16px; }
+
+.skip-link {
+  position: fixed;
+  top: -60px;
+  left: 8px;
+  z-index: 400;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background-color: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.skip-link:focus { top: calc(var(--safe-top) + 8px); }
+
+.search-wrap { position: relative; }
+
+.search-input-plain { padding-left: 16px; }
+
+.search-input {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+}
+
+.search-container .filter-bar { margin-top: 10px; }
+
+h1.section-title { line-height: 1.3; }
+
+h2.settings-group-title,
+h2.modal-title { line-height: 1.3; }
+
+/* ============================================
+   20. Accessible controls
+   ============================================ */
+:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+.search-input:focus-visible { outline-offset: 0; }
+
+button.site-checkbox,
+button.step-checkbox {
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Enlarges the tap target to ~44px without changing the visual size. */
+button.site-checkbox::after,
+button.step-checkbox::after {
+  content: "";
+  position: absolute;
+  inset: -11px;
+}
+
+button.tab-item {
+  background: none;
+  border: 0;
+  font-family: inherit;
+}
+
+button.settings-item {
+  width: 100%;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+button.settings-item:last-child { border-bottom: 0; }
+
+.settings-item:active { background-color: var(--press); }
+
+.settings-static { cursor: default; }
+.settings-static:active { background-color: transparent; }
+
+.settings-item-text,
+.settings-item-desc { display: block; }
+
+.settings-item-icon { flex: none; }
+
+.settings-pad { padding: 12px; }
+
+.segmented {
+  display: flex;
+  gap: 4px;
+  background-color: var(--surface);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+}
+
+.segment {
+  flex: 1;
+  min-height: 40px;
+  padding: 8px 6px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.segment[aria-pressed="true"] {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.btn-label { display: none; }
+
+@media (min-width: 480px) {
+  .btn-label { display: inline; }
+}
+
+/* ============================================
+   21. Dashboard section progress
+   ============================================ */
+.section-rows {
+  margin-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.section-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 12px;
+  width: 100%;
+  padding: 12px 0 4px;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.section-row-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.section-row-count {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.mini-bar {
+  grid-column: 1 / -1;
+  display: block;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--surface);
+  overflow: hidden;
+}
+
+.mini-bar-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  transition: width 0.5s ease;
+}
+
+.progress-bar { width: 0; }
+
+/* ============================================
+   22. Card details, links, notes
+   ============================================ */
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.link-row:empty { display: none; }
+
+.site-link-compact {
+  margin: 0;
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  flex: none;
+}
+
+.site-link-compact svg { display: none; }
+
+.note-info {
+  border-left: 3px solid var(--primary);
+  background-color: var(--surface);
+  color: var(--text-secondary);
+}
+
+.detail-line {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.done-date {
+  font-size: 0.75rem;
+  color: var(--success);
+  margin-top: 4px;
+}
+
+.badge-hard {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+.badge-neutral {
+  background-color: rgba(148, 163, 184, 0.15);
+  color: var(--text-secondary);
+}
+
+.site-card.flash {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.35);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   23. Warning tip card
+   ============================================ */
+.tip-warning {
+  border-left-color: var(--warning);
+  background: linear-gradient(135deg, var(--warning-bg), var(--card));
+}
+
+.tip-warning h2 {
+  color: var(--warning);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tip-warning p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.warn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  color: var(--warning);
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid var(--warning);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================
+   24. Modal content, global search, toast
+   ============================================ */
+body.modal-open { overflow: hidden; }
+
+.modal-overlay {
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0s linear 0.2s;
+}
+
+.modal-overlay.active {
+  visibility: visible;
+  transition: opacity 0.2s, visibility 0s;
+}
+
+.modal:focus { outline: none; }
+
+.modal-title { padding-right: 40px; }
+
+.modal-close { top: 14px; right: 14px; }
+
+.modal-body,
+.modal-text {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.modal-text { margin-bottom: 16px; }
+
+.modal-body .tip-card { margin-bottom: 16px; background-color: var(--surface); }
+
+.btn-row {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-row .btn { flex: 1; }
+
+.global-results { margin-top: 12px; min-height: 30vh; }
+
+.result-row {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.result-name {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.result-meta {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.result-done { color: var(--success); }
+
+.email-template { padding-top: 44px; }
+
+.toast.leaving {
+  opacity: 0;
+  transform: translateY(-16px);
+  transition: all 0.3s;
+}
+
+/* ============================================
+   25. Footer branding
+   ============================================ */
+.ts-brand-footer {
+  text-align: center;
+  padding: 18px 0 calc(var(--tab-height) + var(--safe-bottom) + 24px);
+  border-top: 1px solid var(--hairline);
+}
+
+.ts-brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.ts-brand-link:hover { color: #a78bfa; }
+
+.made-by {
+  clear: both;
+  text-align: center;
+  padding: 8px 12px 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.made-by a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ============================================
+   26. Light theme adjustments (badge text contrast)
+   ============================================ */
+:root[data-theme="light"] .badge-easy { color: #15803d; }
+:root[data-theme="light"] .badge-medium { color: #b45309; }
+:root[data-theme="light"] .badge-priority,
+:root[data-theme="light"] .badge-hard,
+:root[data-theme="light"] .cat-gov { color: #b91c1c; }
+:root[data-theme="light"] .cat-b2b { color: #1d4ed8; }
+:root[data-theme="light"] .cat-ad { color: #7e22ce; }
+:root[data-theme="light"] .cat-mkt { color: #0f766e; }
+:root[data-theme="light"] .cat-fin { color: #b45309; }
+:root[data-theme="light"] .cat-loc { color: #0e7490; }
+:root[data-theme="light"] .cat-id { color: #be185d; }
+:root[data-theme="light"] .cat-prop { color: #4d7c0f; }
+:root[data-theme="light"] .cat-hr { color: #c2410c; }
+:root[data-theme="light"] .cat-pub { color: #4338ca; }
+:root[data-theme="light"] .cat-other { color: #475569; }
+:root[data-theme="light"] .site-card.completed { opacity: 0.75; }
+:root[data-theme="light"] .ts-brand-link:hover { color: #6d28d9; }
+
+/* ============================================
+   27. Larger screens and reduced motion
+   ============================================ */
+@media (min-width: 641px) {
+  .modal-overlay { align-items: center; }
+  .modal { border-radius: var(--radius); }
+  .stats-grid { grid-template-columns: repeat(4, 1fr); }
+  .tab-bar { justify-content: center; }
+  .tab-item { max-width: 128px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .ts-brand-footer,
+  .skip-link { display: none !important; }
+
+  .site-card .site-details {
+    display: block !important;
+    visibility: visible !important;
+  }
 }

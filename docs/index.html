@@ -2,66 +2,74 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; manifest-src 'self'; connect-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Privacy Shield">
 <meta name="theme-color" content="#0a0a0f">
-<meta name="description" content="Step-by-step opt-out guide for 443+ data broker and people-search sites. Free and open source.">
+<meta name="description" content="Step-by-step opt-out guide for 425 data broker and people-search sites. Free and open source.">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Opt-Out Guide 2026 — Remove Your Info from 443+ Data Brokers">
+<meta property="og:title" content="Opt-Out Guide 2026 — Remove Your Info from 425 Data Brokers">
 <meta property="og:description" content="Step-by-step removal guide for people-search and data broker sites. Free, open source, no tracking.">
-<meta property="og:image" content="https://thumpersecure.github.io/opt-out-manual-2026/social-preview.png">
+<meta property="og:image" content="https://thumpersecure.github.io/opt-out-manual-2026/social-preview.png?v=20261122">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://thumpersecure.github.io/opt-out-manual-2026/">
 <meta property="og:site_name" content="Opt-Out Guide 2026">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Opt-Out Guide 2026 — Remove Your Info from 443+ Data Brokers">
+<meta name="twitter:title" content="Opt-Out Guide 2026 — Remove Your Info from 425 Data Brokers">
 <meta name="twitter:description" content="Step-by-step removal guide for people-search and data broker sites. Free, open source, no tracking.">
-<meta name="twitter:image" content="https://thumpersecure.github.io/opt-out-manual-2026/social-preview.png">
+<meta name="twitter:image" content="https://thumpersecure.github.io/opt-out-manual-2026/social-preview.png?v=20261122">
+<link rel="canonical" href="https://thumpersecure.github.io/opt-out-manual-2026/">
 <link rel="manifest" href="./manifest.json">
 <link rel="apple-touch-icon" href="./icon.svg">
 <link rel="icon" type="image/svg+xml" href="./icon.svg">
 <link rel="stylesheet" href="./app.css">
+<script src="./theme.js"></script>
 <title>Privacy Shield - Opt-Out Checklist</title>
 </head>
 <body>
-<noscript><div style="padding:40px;text-align:center;color:#e2e8f0;background:#0a0a0f;min-height:100vh;font-family:system-ui"><h1>Privacy Shield</h1><p style="margin-top:16px">This app requires JavaScript to run. Please enable JavaScript in your browser settings.</p></div></noscript>
+<noscript><div class="noscript"><h1>Privacy Shield</h1><p>This app requires JavaScript to run. Please enable JavaScript in your browser settings.</p></div></noscript>
+
+<a class="skip-link" href="#app">Skip to content</a>
 
 <header class="app-header">
   <div class="header-content">
     <div class="app-title">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
       Privacy Shield
     </div>
     <div class="header-actions">
-      <button class="btn btn-sm btn-secondary" onclick="App.showSearch()" aria-label="Search">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <button type="button" class="btn btn-sm btn-secondary" data-action="search-open" aria-label="Search all sites">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <span class="btn-label">Search</span>
       </button>
     </div>
   </div>
 </header>
 
-<div id="app">
+<main id="app">
 
   <!-- DASHBOARD PAGE -->
-  <div id="page-dashboard" class="page active">
+  <section id="page-dashboard" class="page active" aria-label="Dashboard">
     <div class="content">
-      <div class="section-title">Your Progress</div>
+      <h1 class="section-title">Your Progress</h1>
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-value" id="stat-completed">0</div>
           <div class="stat-label">Completed</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value" id="stat-total">442</div>
+          <div class="stat-value" id="stat-total">425</div>
           <div class="stat-label">Total Sites</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value" id="stat-main">0/30</div>
+          <div class="stat-value" id="stat-main">0/28</div>
           <div class="stat-label">Main Sites</div>
         </div>
         <div class="stat-card">
@@ -71,275 +79,321 @@
       </div>
 
       <div class="progress-card">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <span style="font-weight:600">Overall Progress</span>
+        <div class="row-between">
+          <span class="fw-600">Overall Progress</span>
           <span class="progress-text" id="progress-pct">0%</span>
         </div>
-        <div class="progress-bar-container">
-          <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+        <div class="progress-bar-container" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-meter">
+          <div class="progress-bar" id="progress-bar"></div>
         </div>
-        <div class="progress-text" id="progress-detail">0 of 442 sites completed</div>
+        <div class="progress-text" id="progress-detail">0 of 425 sites completed</div>
+
+        <div class="section-rows">
+          <button type="button" class="section-row" data-action="nav" data-page="main">
+            <span class="section-row-label">Main Sites</span>
+            <span class="section-row-count" id="sp-count-main">0/28</span>
+            <span class="mini-bar"><span class="mini-bar-fill" id="sp-bar-main"></span></span>
+          </button>
+          <button type="button" class="section-row" data-action="nav" data-page="additional">
+            <span class="section-row-label">Additional Sites</span>
+            <span class="section-row-count" id="sp-count-additional">0/144</span>
+            <span class="mini-bar"><span class="mini-bar-fill" id="sp-bar-additional"></span></span>
+          </button>
+          <button type="button" class="section-row" data-action="nav" data-page="brokers">
+            <span class="section-row-label">Data Brokers</span>
+            <span class="section-row-count" id="sp-count-brokers">0/253</span>
+            <span class="mini-bar"><span class="mini-bar-fill" id="sp-bar-brokers"></span></span>
+          </button>
+        </div>
       </div>
 
       <div class="progress-card" id="priority-card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-          <span style="font-weight:600">Priority Sites</span>
+        <div class="row-between mb-12">
+          <span class="fw-600">Priority Sites</span>
           <span class="site-badge badge-priority">Start Here</span>
         </div>
-        <div class="section-subtitle" style="margin-bottom:12px">These upstream brokers feed data to many smaller sites. Remove from these first for maximum impact.</div>
+        <div class="section-subtitle mb-12">These upstream brokers feed data to many smaller sites. Remove from these first for maximum impact.</div>
         <div id="priority-list"></div>
       </div>
 
       <div class="tip-card">
-        <h3>Quick Start</h3>
+        <h2>Quick Start</h2>
         <ol class="tip-list" id="quick-start-list"></ol>
       </div>
 
       <div class="tip-card">
-        <h3>Before You Begin</h3>
+        <h2>Before You Begin</h2>
         <ol class="tip-list" id="before-begin-list"></ol>
       </div>
 
-      <div class="tip-card" style="border-left-color:var(--warning);background:linear-gradient(135deg,var(--warning-bg),var(--card));">
-        <h3 style="color:var(--warning);display:flex;align-items:center;gap:8px;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div class="tip-card tip-warning">
+        <h2>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           Site won't remove your data?
-        </h3>
-        <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:10px;">Some brokers stall, ignore requests, or demand ID you're not comfortable providing. You have options.</p>
-        <a href="https://github.com/thumpersecure/opt-out-manual-2026/issues/9" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:0.875rem;color:var(--warning);text-decoration:none;font-weight:600;border:1px solid var(--warning);padding:6px 12px;border-radius:var(--radius-sm);">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+        </h2>
+        <p>Some brokers stall, ignore requests, or demand ID you're not comfortable providing. You have options.</p>
+        <a class="warn-link" href="https://github.com/thumpersecure/opt-out-manual-2026/issues/9" target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
           What to do when they won't comply →
         </a>
       </div>
 
       <div class="tip-card">
-        <h3>Pro Tips</h3>
+        <h2>Pro Tips</h2>
         <ol class="tip-list" id="pro-tips-list"></ol>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- MAIN SITES PAGE -->
-  <div id="page-main" class="page">
+  <section id="page-main" class="page" aria-label="Main sites">
     <div class="content">
-      <div class="section-title">Main Sites <span id="main-count" class="progress-text">(30 sites)</span></div>
+      <h1 class="section-title">Main Sites <span id="main-count" class="progress-text">(28 sites)</span></h1>
       <div class="section-subtitle">Detailed step-by-step opt-out instructions</div>
       <div class="search-container">
-        <div style="position:relative">
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="text" class="search-input" id="search-main" placeholder="Search sites..." oninput="App.filterMain()">
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" class="search-input" id="search-main" data-section="main" placeholder="Search main sites..." aria-label="Search main sites" autocomplete="off" spellcheck="false">
         </div>
-        <div class="filter-bar" id="filter-main">
-          <button class="filter-chip active" data-filter="all" onclick="App.setFilter('main','all',this)">All</button>
-          <button class="filter-chip" data-filter="pending" onclick="App.setFilter('main','pending',this)">Pending</button>
-          <button class="filter-chip" data-filter="completed" onclick="App.setFilter('main','completed',this)">Done</button>
-          <button class="filter-chip" data-filter="easy" onclick="App.setFilter('main','easy',this)">Easy</button>
-          <button class="filter-chip" data-filter="medium" onclick="App.setFilter('main','medium',this)">Medium</button>
+        <div class="filter-bar" id="filter-main" role="group" aria-label="Filter main sites">
+          <button type="button" class="filter-chip active" aria-pressed="true" data-action="filter" data-section="main" data-filter="all">All</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="main" data-filter="pending">Pending</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="main" data-filter="completed">Done</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="main" data-filter="easy">Easy</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="main" data-filter="medium">Medium</button>
         </div>
       </div>
       <div id="main-sites-list"></div>
+      <div class="empty-state" id="empty-main" hidden>No sites match. Try a different search or filter.</div>
     </div>
-  </div>
+  </section>
 
   <!-- ADDITIONAL SITES PAGE -->
-  <div id="page-additional" class="page">
+  <section id="page-additional" class="page" aria-label="Additional sites">
     <div class="content">
-      <div class="section-title">Additional Sites <span id="additional-count" class="progress-text">(155 sites)</span></div>
+      <h1 class="section-title">Additional Sites <span id="additional-count" class="progress-text">(144 sites)</span></h1>
       <div class="section-subtitle">People search &amp; data broker opt-outs</div>
       <div class="search-container">
-        <div style="position:relative">
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="text" class="search-input" id="search-additional" placeholder="Search sites..." oninput="App.filterAdditional()">
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" class="search-input" id="search-additional" data-section="additional" placeholder="Search additional sites..." aria-label="Search additional sites" autocomplete="off" spellcheck="false">
         </div>
-        <div class="filter-bar" id="filter-additional">
-          <button class="filter-chip active" data-filter="all" onclick="App.setFilter('additional','all',this)">All</button>
-          <button class="filter-chip" data-filter="pending" onclick="App.setFilter('additional','pending',this)">Pending</button>
-          <button class="filter-chip" data-filter="completed" onclick="App.setFilter('additional','completed',this)">Done</button>
-          <button class="filter-chip" data-filter="priority" onclick="App.setFilter('additional','priority',this)">Priority</button>
+        <div class="filter-bar" id="filter-additional" role="group" aria-label="Filter additional sites">
+          <button type="button" class="filter-chip active" aria-pressed="true" data-action="filter" data-section="additional" data-filter="all">All</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="additional" data-filter="pending">Pending</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="additional" data-filter="completed">Done</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="additional" data-filter="priority">Priority</button>
         </div>
       </div>
       <div id="additional-sites-list"></div>
+      <div class="empty-state" id="empty-additional" hidden>No sites match. Try a different search or filter.</div>
     </div>
-  </div>
+  </section>
 
   <!-- DATA BROKERS PAGE -->
-  <div id="page-brokers" class="page">
+  <section id="page-brokers" class="page" aria-label="Data brokers">
     <div class="content">
-      <div class="section-title">Data Brokers <span id="brokers-count" class="progress-text">(257 sites)</span></div>
+      <h1 class="section-title">Data Brokers <span id="brokers-count" class="progress-text">(253 sites)</span></h1>
       <div class="section-subtitle">B2B, ad-tech, marketing &amp; more</div>
       <div class="search-container">
-        <div style="position:relative">
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="text" class="search-input" id="search-brokers" placeholder="Search sites..." oninput="App.filterBrokers()">
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" class="search-input" id="search-brokers" data-section="brokers" placeholder="Search data brokers..." aria-label="Search data brokers" autocomplete="off" spellcheck="false">
         </div>
-        <div class="filter-bar" id="filter-brokers">
-          <button class="filter-chip active" data-filter="all" onclick="App.setFilter('brokers','all',this)">All</button>
-          <button class="filter-chip" data-filter="pending" onclick="App.setFilter('brokers','pending',this)">Pending</button>
-          <button class="filter-chip" data-filter="completed" onclick="App.setFilter('brokers','completed',this)">Done</button>
-          <button class="filter-chip" data-filter="B2B" onclick="App.setFilter('brokers','B2B',this)">B2B</button>
-          <button class="filter-chip" data-filter="AD" onclick="App.setFilter('brokers','AD',this)">Ad-Tech</button>
-          <button class="filter-chip" data-filter="MKT" onclick="App.setFilter('brokers','MKT',this)">Marketing</button>
-          <button class="filter-chip" data-filter="FIN" onclick="App.setFilter('brokers','FIN',this)">Finance</button>
-          <button class="filter-chip" data-filter="GOV" onclick="App.setFilter('brokers','GOV',this)">Political</button>
-          <button class="filter-chip" data-filter="LOC" onclick="App.setFilter('brokers','LOC',this)">Location</button>
-          <button class="filter-chip" data-filter="HR" onclick="App.setFilter('brokers','HR',this)">HR</button>
-          <button class="filter-chip" data-filter="ID" onclick="App.setFilter('brokers','ID',this)">Identity</button>
-          <button class="filter-chip" data-filter="PROP" onclick="App.setFilter('brokers','PROP',this)">Property</button>
-          <button class="filter-chip" data-filter="PUB" onclick="App.setFilter('brokers','PUB',this)">Public</button>
+        <div class="filter-bar" id="filter-brokers" role="group" aria-label="Filter data brokers">
+          <button type="button" class="filter-chip active" aria-pressed="true" data-action="filter" data-section="brokers" data-filter="all">All</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="pending">Pending</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="completed">Done</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="priority">Priority</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="B2B">B2B</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="AD">Ad-Tech</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="MKT">Marketing</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="FIN">Finance</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="GOV">Political</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="LOC">Location</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="HR">HR</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="ID">Identity</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="PROP">Property</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="PUB">Public</button>
+          <button type="button" class="filter-chip" aria-pressed="false" data-action="filter" data-section="brokers" data-filter="OTHER">Other</button>
         </div>
       </div>
       <div id="brokers-sites-list"></div>
+      <div class="empty-state" id="empty-brokers" hidden>No sites match. Try a different search or filter.</div>
     </div>
-  </div>
+  </section>
 
   <!-- SETTINGS PAGE -->
-  <div id="page-settings" class="page">
+  <section id="page-settings" class="page" aria-label="Settings">
     <div class="content">
-      <div class="section-title">Settings</div>
+      <h1 class="section-title">Settings</h1>
 
       <div class="settings-group">
-        <div class="settings-group-title">Your Data</div>
+        <h2 class="settings-group-title">Your Data</h2>
         <div class="settings-card">
-          <div class="settings-item" onclick="App.exportProgress()">
-            <div class="settings-item-left">
-              <div class="settings-item-icon icon-blue">📤</div>
-              <div>
-                <div class="settings-item-text">Export Progress</div>
-                <div class="settings-item-desc">Save your checklist data as a file</div>
-              </div>
-            </div>
-            <div class="settings-item-arrow">›</div>
-          </div>
-          <div class="settings-item" onclick="App.importProgress()">
-            <div class="settings-item-left">
-              <div class="settings-item-icon icon-green">📥</div>
-              <div>
-                <div class="settings-item-text">Import Progress</div>
-                <div class="settings-item-desc">Restore from a previously saved file</div>
-              </div>
-            </div>
-            <div class="settings-item-arrow">›</div>
-          </div>
-          <div class="settings-item" onclick="App.confirmReset()">
-            <div class="settings-item-left">
-              <div class="settings-item-icon icon-red">🗑️</div>
-              <div>
-                <div class="settings-item-text">Reset All Progress</div>
-                <div class="settings-item-desc">Clear all checklist data</div>
-              </div>
-            </div>
-            <div class="settings-item-arrow">›</div>
+          <button type="button" class="settings-item" data-action="export">
+            <span class="settings-item-left">
+              <span class="settings-item-icon icon-blue" aria-hidden="true">📤</span>
+              <span>
+                <span class="settings-item-text">Export Progress</span>
+                <span class="settings-item-desc">Save your checklist data as a file</span>
+              </span>
+            </span>
+            <span class="settings-item-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="settings-item" data-action="import">
+            <span class="settings-item-left">
+              <span class="settings-item-icon icon-green" aria-hidden="true">📥</span>
+              <span>
+                <span class="settings-item-text">Import Progress</span>
+                <span class="settings-item-desc">Restore from a previously saved file</span>
+              </span>
+            </span>
+            <span class="settings-item-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="settings-item" data-action="reset">
+            <span class="settings-item-left">
+              <span class="settings-item-icon icon-red" aria-hidden="true">🗑️</span>
+              <span>
+                <span class="settings-item-text">Reset All Progress</span>
+                <span class="settings-item-desc">Clear all checklist data</span>
+              </span>
+            </span>
+            <span class="settings-item-arrow" aria-hidden="true">›</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <h2 class="settings-group-title">Appearance</h2>
+        <div class="settings-card settings-pad">
+          <div class="segmented" role="group" aria-label="Theme">
+            <button type="button" class="segment" data-action="theme" data-theme="dark" aria-pressed="true">Dark</button>
+            <button type="button" class="segment" data-action="theme" data-theme="light" aria-pressed="false">Light</button>
+            <button type="button" class="segment" data-action="theme" data-theme="system" aria-pressed="false">Match device</button>
           </div>
         </div>
       </div>
 
       <div class="settings-group">
-        <div class="settings-group-title">Reminders</div>
+        <h2 class="settings-group-title">Reminders</h2>
         <div class="settings-card">
-          <div class="settings-item" onclick="App.showReminderModal()">
-            <div class="settings-item-left">
-              <div class="settings-item-icon icon-purple">🔔</div>
-              <div>
-                <div class="settings-item-text">Daily Reminder</div>
-                <div class="settings-item-desc">Set up a noon reminder via iOS Shortcut</div>
-              </div>
-            </div>
-            <div class="settings-item-arrow">›</div>
-          </div>
+          <button type="button" class="settings-item" data-action="reminder">
+            <span class="settings-item-left">
+              <span class="settings-item-icon icon-purple" aria-hidden="true">🔔</span>
+              <span>
+                <span class="settings-item-text">Daily Reminder</span>
+                <span class="settings-item-desc">Set up a noon reminder via iOS Shortcut</span>
+              </span>
+            </span>
+            <span class="settings-item-arrow" aria-hidden="true">›</span>
+          </button>
         </div>
       </div>
 
       <div class="settings-group">
-        <div class="settings-group-title">Tools</div>
+        <h2 class="settings-group-title">Tools</h2>
         <div class="settings-card">
-          <div class="settings-item" onclick="App.showEmailTemplate()">
-            <div class="settings-item-left">
-              <div class="settings-item-icon icon-orange">✉️</div>
-              <div>
-                <div class="settings-item-text">Email Template</div>
-                <div class="settings-item-desc">Copy a ready-made removal request email</div>
-              </div>
-            </div>
-            <div class="settings-item-arrow">›</div>
-          </div>
-          <div class="settings-item" onclick="App.showAddToHomescreen()">
-            <div class="settings-item-left">
-              <div class="settings-item-icon icon-blue">📱</div>
-              <div>
-                <div class="settings-item-text">Add to Home Screen</div>
-                <div class="settings-item-desc">Install as an app on your device</div>
-              </div>
-            </div>
-            <div class="settings-item-arrow">›</div>
-          </div>
+          <button type="button" class="settings-item" data-action="email-template">
+            <span class="settings-item-left">
+              <span class="settings-item-icon icon-orange" aria-hidden="true">✉️</span>
+              <span>
+                <span class="settings-item-text">Email Template</span>
+                <span class="settings-item-desc">Copy a ready-made removal request email</span>
+              </span>
+            </span>
+            <span class="settings-item-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="settings-item" data-action="a2hs">
+            <span class="settings-item-left">
+              <span class="settings-item-icon icon-blue" aria-hidden="true">📱</span>
+              <span>
+                <span class="settings-item-text">Add to Home Screen</span>
+                <span class="settings-item-desc">Install as an app on your device</span>
+              </span>
+            </span>
+            <span class="settings-item-arrow" aria-hidden="true">›</span>
+          </button>
         </div>
       </div>
 
       <div class="settings-group">
-        <div class="settings-group-title">About</div>
+        <h2 class="settings-group-title">About</h2>
         <div class="settings-card">
-          <div class="settings-item">
-            <div class="settings-item-left">
-              <div class="settings-item-icon icon-purple">🛡️</div>
-              <div>
-                <div class="settings-item-text">Privacy Shield v1.0</div>
-                <div class="settings-item-desc">443+ sites • Open source • No tracking</div>
-              </div>
-            </div>
+          <div class="settings-item settings-static">
+            <span class="settings-item-left">
+              <span class="settings-item-icon icon-purple" aria-hidden="true">🛡️</span>
+              <span>
+                <span class="settings-item-text">Privacy Shield v2.0</span>
+                <span class="settings-item-desc">425 sites • Open source • No tracking • Works offline</span>
+              </span>
+            </span>
+          </div>
+          <div class="settings-item settings-static">
+            <span class="settings-item-left">
+              <span class="settings-item-icon icon-green" aria-hidden="true">🔒</span>
+              <span>
+                <span class="settings-item-text">Your data stays on this device</span>
+                <span class="settings-item-desc">No accounts, cookies, analytics or network calls. Links open without a referrer, so brokers can't see you came from this guide.</span>
+              </span>
+            </span>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-</div>
+</main>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay" onclick="App.closeModal(event)">
-  <div class="modal" id="modal">
-    <div class="modal-title" id="modal-title"></div>
+<div class="modal-overlay" id="modal-overlay" data-action="overlay">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+    <button type="button" class="modal-close" data-action="close-modal" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <h2 class="modal-title" id="modal-title"></h2>
     <div id="modal-content"></div>
   </div>
 </div>
 
 <!-- TOAST CONTAINER -->
-<div class="toast-container" id="toast-container"></div>
+<div class="toast-container" id="toast-container" role="status" aria-live="polite"></div>
 
 <!-- HIDDEN FILE INPUT -->
-<input type="file" id="import-file" accept=".json" style="display:none" onchange="App.handleImport(event)">
+<input type="file" id="import-file" accept=".json,application/json" hidden>
 
 <!-- thumpersecure branding -->
-<div class="ts-brand-footer" style="text-align:center;padding:18px 0 80px;border-top:1px solid rgba(255,255,255,0.06);">
-  <a href="https://github.com/thumpersecure" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:#8b8b9e;text-decoration:none;font-size:0.78rem;letter-spacing:0.04em;transition:color 0.2s;" onmouseover="this.style.color='#a78bfa'" onmouseout="this.style.color='#8b8b9e'">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+<div class="ts-brand-footer">
+  <a class="ts-brand-link" href="https://github.com/thumpersecure" target="_blank" rel="noopener noreferrer">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
     <span>thumpersecure</span>
   </a>
 <!-- made-by:justinhorn.pro -->
-<div class="made-by" style="clear:both;text-align:center;padding:8px 12px 0;font:13px/1.8 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#8b8b9e">Made by <a href="https://justinhorn.pro" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">justinhorn.pro</a></div>
+<div class="made-by">Made by <a href="https://justinhorn.pro" target="_blank" rel="noopener" referrerpolicy="origin">justinhorn.pro</a></div>
 </div>
 
 <!-- TAB BAR -->
-<nav class="tab-bar">
-  <a class="tab-item active" data-page="dashboard" onclick="App.navigate('dashboard',this)">
-    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+<nav class="tab-bar" aria-label="Sections">
+  <button type="button" class="tab-item active" aria-current="page" data-action="nav" data-page="dashboard">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
     Home
-  </a>
-  <a class="tab-item" data-page="main" onclick="App.navigate('main',this)">
-    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  </button>
+  <button type="button" class="tab-item" data-action="nav" data-page="main">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     Main
-  </a>
-  <a class="tab-item" data-page="additional" onclick="App.navigate('additional',this)">
-    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+  </button>
+  <button type="button" class="tab-item" data-action="nav" data-page="additional">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
     More
-  </a>
-  <a class="tab-item" data-page="brokers" onclick="App.navigate('brokers',this)">
-    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+  </button>
+  <button type="button" class="tab-item" data-action="nav" data-page="brokers">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
     Brokers
-  </a>
-  <a class="tab-item" data-page="settings" onclick="App.navigate('settings',this)">
-    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2m-9-11h2m18 0h2m-3.3-6.7-1.4 1.4M6.7 17.3l-1.4 1.4m0-13.4 1.4 1.4m10.6 10.6 1.4 1.4"/></svg>
+  </button>
+  <button type="button" class="tab-item" data-action="nav" data-page="settings">
+    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2m-9-11h2m18 0h2m-3.3-6.7-1.4 1.4M6.7 17.3l-1.4 1.4m0-13.4 1.4 1.4m10.6 10.6 1.4 1.4"/></svg>
     Settings
-  </a>
+  </button>
 </nav>
 
 <script src="./data.js"></script>
