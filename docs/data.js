@@ -263,27 +263,6 @@ const SITE_DATA = {
       ]
     },
     {
-      id: 'official-usa',
-      name: 'OfficialUSA',
-      domain: 'officialusa.com',
-      difficulty: 'medium',
-      time: '10-20 min',
-      needsEmail: true,
-      needsId: false,
-      optOutUrl: 'https://www.officialusa.com/remove',
-      note: '',
-      steps: [
-        'Locate your listing on officialusa.com',
-        'Copy the URL of your listing',
-        'Visit officialusa.com/remove',
-        'Follow the instructions to submit a removal request',
-        'You may need to email them directly',
-        'Include your name address and the listing URL',
-        'Request removal of your information',
-        'Check back to verify removal'
-      ]
-    },
-    {
       id: 'peek-you',
       name: 'PeekYou',
       domain: 'peekyou.com',
@@ -520,26 +499,6 @@ const SITE_DATA = {
       ]
     },
     {
-      id: 'us-identify',
-      name: 'US Identify',
-      domain: 'usidentify.com',
-      difficulty: 'medium',
-      time: '10-20 min',
-      needsEmail: true,
-      needsId: false,
-      optOutUrl: 'https://www.usidentify.com/optout',
-      note: '',
-      steps: [
-        'Find your listing on usidentify.com',
-        'Copy the URL of your listing',
-        'Visit usidentify.com/optout',
-        'Fill out the opt-out form',
-        'Submit the request',
-        'Confirm via email if prompted',
-        'Check back to verify removal'
-      ]
-    },
-    {
       id: 'us-phonebook',
       name: 'US Phonebook',
       domain: 'usphonebook.com',
@@ -699,7 +658,7 @@ const SITE_DATA = {
       id: 'america-phonebook',
       name: 'America Phonebook',
       domain: 'americaphonebook.com',
-      optOutUrl: 'http://www.americaphonebook.com/contact.php',
+      optOutUrl: 'https://www.americaphonebook.com/contact.php',
       method: 'Contact form / Email',
       notes: 'Use the contact form to request removal. Email: lookupuk@gmail.com',
       priority: false
@@ -747,24 +706,6 @@ const SITE_DATA = {
       optOutUrl: 'Embedded on record page',
       method: 'On-site removal',
       notes: 'Click Information Control on any record and follow the removal instructions.',
-      priority: false
-    },
-    {
-      id: 'background-alert',
-      name: 'Background Alert',
-      domain: 'backgroundalert.com',
-      optOutUrl: 'https://www.backgroundalert.com/optout/',
-      method: 'Online form',
-      notes: 'Online removal tool completes the process.',
-      priority: false
-    },
-    {
-      id: 'background-check',
-      name: 'Background Check',
-      domain: 'backgroundcheck.run',
-      optOutUrl: 'https://backgroundcheck.run/ng/control/privacy',
-      method: 'Online form',
-      notes: 'Online removal tool. Search and submit removal.',
       priority: false
     },
     {
@@ -816,18 +757,9 @@ const SITE_DATA = {
       id: 'buzzfile',
       name: 'Buzzfile',
       domain: 'buzzfile.com',
-      optOutUrl: 'http://www.buzzfile.com/Company/Remove',
+      optOutUrl: 'https://www.buzzfile.com/Company/Remove',
       method: 'Online form',
       notes: 'Business directory. Online removal tool.',
-      priority: false
-    },
-    {
-      id: 'call-truth',
-      name: 'Call Truth',
-      domain: 'calltruth.com',
-      optOutUrl: 'https://www.calltruth.com/opt_out.php',
-      method: 'Online form',
-      notes: 'Phone lookup service. Online opt-out form.',
       priority: false
     },
     {
@@ -1164,30 +1096,12 @@ const SITE_DATA = {
       priority: false
     },
     {
-      id: 'id-true',
-      name: 'ID True',
-      domain: 'idtrue.com',
-      optOutUrl: 'https://www.idtrue.com/optout/',
-      method: 'Online form',
-      notes: 'Online removal tool. Follow prompts.',
-      priority: false
-    },
-    {
       id: 'infopay',
       name: 'Infopay',
       domain: 'infopay.com',
       optOutUrl: 'None (email only)',
       method: 'Email',
       notes: 'Submit request to privacy@infopay.com. Operates several subsidiary sites.',
-      priority: false
-    },
-    {
-      id: 'infospace',
-      name: 'Infospace',
-      domain: 'infospace.com',
-      optOutUrl: 'https://infospace.intelius.com/optout.php',
-      method: 'Online form',
-      notes: 'Uses Intelius data. Online removal tool.',
       priority: false
     },
     {
@@ -1344,15 +1258,6 @@ const SITE_DATA = {
       priority: false
     },
     {
-      id: 'our-states',
-      name: 'OurStates',
-      domain: 'ourstates.org',
-      optOutUrl: 'https://ourstates.org/opt-out',
-      method: 'Online form',
-      notes: 'Use caution - some users report scam-like behavior.',
-      priority: false
-    },
-    {
       id: 'ownerly',
       name: 'Ownerly',
       domain: 'ownerly.com',
@@ -1479,15 +1384,6 @@ const SITE_DATA = {
       priority: false
     },
     {
-      id: 'people-background-check',
-      name: 'PeopleBackgroundCheck',
-      domain: 'people-background-check.com',
-      optOutUrl: 'https://people-background-check.com/ng/control/privacy',
-      method: 'Online form',
-      notes: 'Online removal tool.',
-      priority: false
-    },
-    {
       id: 'persopo',
       name: 'Persopo',
       domain: 'persopo.com',
@@ -1564,15 +1460,6 @@ const SITE_DATA = {
       name: 'Pub360',
       domain: 'pub360.com',
       optOutUrl: 'https://pub360.com/ng/control/privacy',
-      method: 'Online form',
-      notes: 'Online removal tool.',
-      priority: false
-    },
-    {
-      id: 'public-data-usa',
-      name: 'Public Data USA',
-      domain: 'publicdatausa.com',
-      optOutUrl: 'https://publicdatausa.com/remove.php',
       method: 'Online form',
       notes: 'Online removal tool.',
       priority: false
@@ -1671,7 +1558,7 @@ const SITE_DATA = {
       id: 'sales-spider',
       name: 'Sales Spider',
       domain: 'salespider.com',
-      optOutUrl: 'http://salespidermedia.com/opt-out-and-information-removal.php',
+      optOutUrl: 'https://salespidermedia.com/opt-out-and-information-removal.php',
       method: 'Online form',
       notes: 'Business directory. Select Delete this profile.',
       priority: false
@@ -1833,7 +1720,7 @@ const SITE_DATA = {
       id: 'united-states-phonebook',
       name: 'United States Phonebook',
       domain: 'unitedstatesphonebook.com',
-      optOutUrl: 'http://www.unitedstatesphonebook.com/contact.php',
+      optOutUrl: 'https://www.unitedstatesphonebook.com/contact.php',
       method: 'Email',
       notes: 'Email paulmfield@gmail.com or lookupuk@gmail.com.',
       priority: false
@@ -1843,15 +1730,6 @@ const SITE_DATA = {
       name: 'Unmask',
       domain: 'unmask.com',
       optOutUrl: 'https://unmask.com/opt-out',
-      method: 'Online form',
-      notes: 'Online removal tool.',
-      priority: false
-    },
-    {
-      id: 'usa-official',
-      name: 'USA Official',
-      domain: 'usa-official.com',
-      optOutUrl: 'https://usa-official.com/remove.php',
       method: 'Online form',
       notes: 'Online removal tool.',
       priority: false
@@ -1893,28 +1771,10 @@ const SITE_DATA = {
       priority: false
     },
     {
-      id: 'vehicle-history',
-      name: 'Vehicle History',
-      domain: 'vehiclehistory.com',
-      optOutUrl: 'None (email only)',
-      method: 'Email',
-      notes: 'Email support@vehiclehistory.com.',
-      priority: false
-    },
-    {
       id: 'verecor',
       name: 'Verecor',
       domain: 'verecor.com',
       optOutUrl: 'https://findrec.com/page/privacy',
-      method: 'Online form',
-      notes: 'Online removal tool.',
-      priority: false
-    },
-    {
-      id: 'vericora',
-      name: 'Vericora',
-      domain: 'vericora.com',
-      optOutUrl: 'https://vericora.com/ng/control/privacy',
       method: 'Online form',
       notes: 'Online removal tool.',
       priority: false
@@ -2861,16 +2721,6 @@ const SITE_DATA = {
       priority: false
     },
     {
-      id: 'first-direct-marketing',
-      name: 'First Direct Marketing',
-      website: 'firstdirectcorp.com',
-      category: 'MKT',
-      optOutMethod: 'Online form',
-      processingTime: 'Varies',
-      notes: 'Direct mail marketing.',
-      priority: false
-    },
-    {
       id: 'forewarn',
       name: 'FOREWARN',
       website: 'forewarn.com',
@@ -3191,16 +3041,6 @@ const SITE_DATA = {
       priority: false
     },
     {
-      id: 'join-5x5',
-      name: 'Join5x5',
-      website: 'join5x5.com',
-      category: 'AD',
-      optOutMethod: 'Online form',
-      processingTime: 'Varies',
-      notes: 'Advertising data.',
-      priority: false
-    },
-    {
       id: 'jun-group',
       name: 'JunGroup',
       website: 'jungroup.com',
@@ -3228,16 +3068,6 @@ const SITE_DATA = {
       optOutMethod: 'Online form',
       processingTime: 'Varies',
       notes: 'Direct marketing data.',
-      priority: false
-    },
-    {
-      id: 'key-opinion-leaders',
-      name: 'Key Opinion Leaders',
-      website: 'keyopinionleaders.com',
-      category: 'B2B',
-      optOutMethod: 'Online form',
-      processingTime: 'Varies',
-      notes: 'Healthcare professional data.',
       priority: false
     },
     {
@@ -3538,16 +3368,6 @@ const SITE_DATA = {
       optOutMethod: 'Online form + Email confirm',
       processingTime: 'Varies',
       notes: 'Performance marketing data.',
-      priority: false
-    },
-    {
-      id: 'might-rep',
-      name: 'MightRep',
-      website: 'mightrep.com',
-      category: 'B2B',
-      optOutMethod: 'Online form',
-      processingTime: 'Varies',
-      notes: 'Sales data.',
       priority: false
     },
     {
