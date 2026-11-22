@@ -1,0 +1,32 @@
+name: Validate site data
+
+on:
+  pull_request:
+    paths: ['docs/**', 'tools/**', '.github/workflows/validate.yml']
+  push:
+    branches: [main]
+    paths: ['docs/**', 'tools/**', '.github/workflows/validate.yml']
+
+# Read-only token, and never pull_request_target: code from forks runs here
+# with no secrets and no write access.
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check docs/data.js
+        run: node tools/validate-data.mjs
+      - name: Check app scripts parse
+        run: |
+          for f in docs/app.js docs/theme.js docs/sw.js docs/data.js; do node --check "$f"; done
+      - name: Check the page has no inline scripts or handlers
+        run: |
+          if grep -nE '<script(>| [^>]*[^c]>)|[[:space:]]on[a-z]+="|style="' docs/index.html | grep -v 'src='; then
+            echo "docs/index.html must not contain inline scripts, event handlers or style attributes (CSP)."; exit 1
+          fi
