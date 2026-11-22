@@ -1271,3 +1271,5 @@ Use this to log your progress:
 -----
 
 *Last updated: February 2026 • Total sites covered: 439+*
+
+Made by [justinhorn.pro](https://justinhorn.pro)
